@@ -1,3 +1,5 @@
+// Lv1.연습문제 - 직사각형 별찍기
+
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', (data) => {
   const n = data.split(' ');
