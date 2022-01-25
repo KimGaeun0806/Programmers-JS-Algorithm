@@ -1,3 +1,5 @@
+// Lv1.2022 KAKAO BLIND RECRUITMENT - 신고 결과 받기
+
 function solution(id_list, report, k) {
   let answer = Array.from({ length: id_list.length }, () => 0);
   let newReport = Array.from(new Set(report)); // Set 객체를 이용하여 report 배열 중복 제거
