@@ -1,1 +1,1 @@
-# Programmers-JSCodingTest
+# Programmers-JS-Algorithm
