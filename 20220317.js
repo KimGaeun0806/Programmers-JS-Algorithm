@@ -1,43 +1,61 @@
-// Lv1.2021 KAKAO BLIND RECRUITMENT - 신규 아이디 추천
+// Lv1.2021 카카오 채용연계형 인턴십 - 숫자 문자열과 영단어
 
-function solution(new_id) {
-  let id = new_id
-    .toLowerCase()
-    .replace(/[^a-z0-9-_.]/g, '') // 알파벳 소문자, 숫자, -, _, .이 아닌 것들 제거
-    .replace(/[.]+/g, '.') // .가 2번 이상 연속된 것을 1개로 치환
-    .replace(/^[.]|[.]$/g, ''); // .가 처음이나 끝에 위치하면 제거
-  id = id === '' ? 'a' : id;
-  id = /{,15}/.test(id) ? id : id.slice(0, 15).replace(/[.]$/g, ''); // 길이가 16자 이상이면 15자 뒤로는 모두 제거, 그 이후에 .가 끝에 위치하면 제거
-  return id.length <= 2 ? id + id[id.length - 1].repeat(3 - id.length) : id;
+function solution(s) {
+  let num = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+
+  for (let i = 0; i <= 9; i++) {
+    s = s.split(num[i]).join(i);
+  }
+  return +s;
+  // s = s.replace(num[i], i);을 했을 때 ->
+  // replace() 메소드는 어떤 패턴에 일치하는 일부 또는 모든 부분이 교체된 새로운 문자열 반환
+  // 여기서 패턴이 문자열인 경우, 첫 번째 문자열만 치환이 됨
+  // 그러므로 s = "oneone"같은 경우 "1one"과 같이 첫 번째  것만 변경됨
+
+  // split() 메소드는 String 객체를 지정한 구분자를 이용하여 여러 개의 문자열로 나눔
 }
 
 // 다른 사람 풀이
-function solution2(new_id) {
-  const answer = new_id
-    .toLowerCase()
-    .replace(/[^\w-_.]/g, '') // \w -> [A-Za-z0-9_]와 일치
-    .replace(/\.+/g, '.')
-    .replace(/^\.|\.$/g, '')
-    .replace(/^$/, 'a') // ^$ -> 빈 문자열
-    .slice(0, 15)
-    .replace(/\.$/, '');
-  const len = answer.length;
-  return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len);
-  // charAt() 함수는 문자열에서 특정 인덱스에 위치하는 유니코드 단일문자 반환
+function solution2(s) {
+  s = s
+    .replace(/zero/gi, 0)
+    .replace(/one/gi, 1)
+    .replace(/two/gi, 2)
+    .replace(/three/gi, 3)
+    .replace(/four/gi, 4)
+    .replace(/five/gi, 5)
+    .replace(/six/gi, 6)
+    .replace(/seven/gi, 7)
+    .replace(/eight/gi, 8)
+    .replace(/nine/gi, 9);
+  return parseInt(s);
 }
 
 //
 
-function solution3(new_id) {
-  const id = new_id
-    .toLowerCase()
-    .replace(/[^\w\d-_.]/g, '')
-    .replace(/\.{2,}/g, '.')
-    .replace(/^\.|\.$/g, '')
-    .padEnd(1, 'a')
-    .slice(0, 15)
-    .replace(/^\.|\.$/g, '');
-  return id.padEnd(3, id[id.length - 1]);
-  // padEnd 메소드는 현재 문자열에 다른 문자열을 채워, 주어진 길이를 만족하는 새로운 문자열 반환
-  // str.padEnd(targetLength [, padString]) -> targetLength는 목표 문자열 길이, padString은 현재 문자열에 채워넣을 다른 문자열
+function solution3(s) {
+  while (isNaN(+s)) {
+    s = s.replace('zero', 0);
+    s = s.replace('one', 1);
+    s = s.replace('two', 2);
+    s = s.replace('three', 3);
+    s = s.replace('four', 4);
+    s = s.replace('five', 5);
+    s = s.replace('six', 6);
+    s = s.replace('seven', 7);
+    s = s.replace('eight', 8);
+    s = s.replace('nine', 9);
+  }
+  return +s;
 }
