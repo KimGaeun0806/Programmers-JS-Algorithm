@@ -9,3 +9,11 @@ function solution(A, B) {
   A.forEach((_, i) => (answer += A[i] * B[i]));
   return answer;
 }
+
+// 최종 코드 2
+function solution(A, B) {
+  A.sort((a, b) => a - b);
+  B.sort((a, b) => b - a);
+
+  return A.map((a, i) => a * B[i]).reduce((p, c) => p + c);
+}
