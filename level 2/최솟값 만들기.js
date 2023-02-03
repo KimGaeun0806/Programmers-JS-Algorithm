@@ -11,7 +11,7 @@ function solution(A, B) {
 }
 
 // 최종 코드 2
-function solution(A, B) {
+function solution2(A, B) {
   A.sort((a, b) => a - b);
   B.sort((a, b) => b - a);
 
