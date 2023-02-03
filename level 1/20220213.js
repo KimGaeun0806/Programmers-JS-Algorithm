@@ -20,8 +20,39 @@ function solution(n) {
   //                       2. 2부터 n의 제곱근(루트n)까지의 소수의 배수들을 제외시키면 소수만 남음
 }
 
-// 다른 사람 풀이
 function solution2(n) {
+  const sqrt = Math.sqrt(n);
+
+  let arr = Array.from({ length: n }, (_, i) => i + 1);
+
+  for (let i = 2; i <= sqrt; i++) {
+    for (let j = i; j <= n; j += i) {
+      if (j !== i) arr[j - 1] = "";
+    }
+  }
+
+  return arr.filter((a) => a).length - 1;
+}
+
+function solution3(n) {
+  const sqrt = Math.sqrt(n);
+  let num = n;
+
+  let arr = Array.from({ length: n }, (_, i) => i + 1);
+
+  for (let i = 2; i <= sqrt; i++) {
+    for (let j = i; j <= n; j += i) {
+      if (j !== i && arr[j - 1]) {
+        arr[j - 1] = "";
+        num--;
+      }
+    }
+  }
+  return num - 1;
+}
+
+// 다른 사람 풀이
+function solution4(n) {
   const s = new Set();
   for (let i = 1; i <= n; i += 2) {
     s.add(i);
