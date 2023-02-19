@@ -26,6 +26,6 @@ function solution2(citations) {
 }
 
 // 최종 코드 3
-function solution(citations) {
+function solution3(citations) {
   return citations.sort((a, b) => b - a).filter((a, i) => a >= i + 1).length;
 }
