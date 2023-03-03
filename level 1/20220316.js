@@ -3,17 +3,17 @@ function solution(numbers, hand) {
   let left = [10];
   let right = [12];
 
-  let h = hand === 'right' ? 'R' : 'L';
+  let h = hand === "right" ? "R" : "L";
 
   return numbers
     .map((a) => (a === 0 ? 11 : a))
     .map((a) => {
       if ([1, 4, 7].includes(a)) {
         left.push(a);
-        return 'L';
+        return "L";
       } else if ([3, 6, 9].includes(a)) {
         right.push(a);
-        return 'R';
+        return "R";
       } else {
         let leftResult = Math.floor(
           (Math.abs(a - left[left.length - 1]) % 3) +
@@ -29,33 +29,71 @@ function solution(numbers, hand) {
 
         if (leftResult > rightResult) {
           right.push(a);
-          return 'R';
+          return "R";
         } else if (leftResult < rightResult) {
           left.push(a);
-          return 'L';
+          return "L";
         } else {
-          h === 'R' ? right.push(a) : left.push(a);
+          h === "R" ? right.push(a) : left.push(a);
           return h;
         }
       }
     })
-    .join('');
+    .join("");
+}
+
+//
+
+const func = (num1, num2) => {
+  num1 = num1 ? num1 : 11;
+  num2 = num2 ? num2 : 11;
+
+  const subtract = Math.abs(num1 - num2);
+  return Math.floor(subtract / 3) + (subtract % 3);
+};
+
+function solution2(numbers, hand) {
+  let left = 10;
+  let right = 12;
+
+  return numbers
+    .map((a) => {
+      const rightFunc = () => {
+        right = a;
+        return "R";
+      };
+
+      const leftFunc = () => {
+        left = a;
+        return "L";
+      };
+
+      if ([1, 4, 7].includes(a)) return leftFunc();
+      else if ([3, 6, 9].includes(a)) return rightFunc();
+      else {
+        if (func(left, a) > func(right, a)) return rightFunc();
+        else if (func(left, a) < func(right, a)) return leftFunc();
+        else if (hand === "right") return rightFunc();
+        else return leftFunc();
+      }
+    })
+    .join("");
 }
 
 // 다른 사람 풀이
 function solution2(numbers, hand) {
-  hand = hand[0] === 'r' ? 'R' : 'L';
+  hand = hand[0] === "r" ? "R" : "L";
   let position = [1, 4, 4, 4, 3, 3, 3, 2, 2, 2];
   let h = { L: [1, 1], R: [1, 1] };
   return numbers
     .map((x) => {
       if (/[147]/.test(x)) {
         h.L = [position[x], 1];
-        return 'L';
+        return "L";
       }
       if (/[369]/.test(x)) {
         h.R = [position[x], 1];
-        return 'R';
+        return "R";
       }
       let distL = Math.abs(position[x] - h.L[0]) + h.L[1];
       let distR = Math.abs(position[x] - h.R[0]) + h.R[1];
@@ -65,10 +103,10 @@ function solution2(numbers, hand) {
       }
       if (distL < distR) {
         h.L = [position[x], 0];
-        return 'L';
+        return "L";
       }
       h.R = [position[x], 0];
-      return 'R';
+      return "R";
     })
-    .join('');
+    .join("");
 }
