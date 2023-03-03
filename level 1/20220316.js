@@ -81,7 +81,7 @@ function solution2(numbers, hand) {
 }
 
 // 다른 사람 풀이
-function solution2(numbers, hand) {
+function solution3(numbers, hand) {
   hand = hand[0] === "r" ? "R" : "L";
   let position = [1, 4, 4, 4, 3, 3, 3, 2, 2, 2];
   let h = { L: [1, 1], R: [1, 1] };
