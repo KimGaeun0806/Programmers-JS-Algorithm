@@ -22,6 +22,32 @@ function solution(board, moves) {
   return basLeng - basket.length;
 }
 
+//
+
+function solution2(board, moves) {
+  const stack = [];
+  let answer = 0;
+
+  for (let a of moves) {
+    let doll = 0;
+    for (let i = 0; i < board.length; i++) {
+      if (board[i][a - 1]) {
+        doll = board[i][a - 1];
+        board[i][a - 1] = 0;
+        break;
+      }
+    }
+
+    if (!doll) continue;
+
+    if (stack.at(-1) === doll) {
+      stack.pop();
+      answer += 2;
+    } else stack.push(doll);
+  }
+  return answer;
+}
+
 // 다른 사람 풀이
 const transpose = (matrix) =>
   matrix.reduce(
@@ -29,7 +55,7 @@ const transpose = (matrix) =>
     []
   );
 
-const solution2 = (board, moves) => {
+const solution3 = (board, moves) => {
   const stacks = transpose(board).map((row) =>
     row.reverse().filter((el) => el !== 0)
   );
@@ -52,7 +78,7 @@ const solution2 = (board, moves) => {
 
 //
 
-function solution3(board, moves) {
+function solution4(board, moves) {
   var count = 0;
   var stack = [];
 
