@@ -48,3 +48,15 @@ function solution3(n, words) {
 
   return [0, 0];
 }
+
+// 최종 코드4
+function solution4(n, words) {
+  for (let i = 1; i < words.length; i++) {
+    const answer = [Math.floor((i + 1) % n) || n, Math.floor(i / n) + 1];
+
+    if (i !== words.indexOf(words[i])) return answer;
+    if (words[i - 1].at(-1) !== words[i][0]) return answer;
+  }
+
+  return [0, 0];
+}
