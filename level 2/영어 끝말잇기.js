@@ -1,4 +1,4 @@
-// LV2_Summer/Winter Coding(~2018): 영어 끝말잇기 - 20220719
+// LV2_Summer/Winter Coding(~2018): 영어 끝말잇기 - 20220719 / 20230325
 
 // 최종 코드
 function solution(n, words) {
@@ -26,6 +26,24 @@ function solution2(n, words) {
     }
     arr.push(x[x.length - 1]);
     idx++;
+  }
+
+  return [0, 0];
+}
+
+// 최종 코드3
+function solution3(n, words) {
+  const stack = [words[0][0]];
+  let num = 0;
+
+  for (let x of words) {
+    const answer = [Math.floor((num + 1) % n) || n, Math.floor(num / n) + 1];
+
+    if (stack.includes(x)) return answer;
+    if (stack.at(-1).at(-1) !== x[0]) return answer;
+
+    stack.push(x);
+    num++;
   }
 
   return [0, 0];
