@@ -23,3 +23,21 @@ function solution(want, number, discount) {
   // sort((a, b) -> a - b)로 했을 때 정렬이 제대로 안되었음
   // 처음에 discount.length - 9 부분을 9리는 숫자로 넣어놔서 테케 통과 못했음
 }
+
+// 다른 사람 풀이
+function solution2(want, number, discount) {
+  let count = 0;
+  for (let i = 0; i < discount.length - 9; i++) {
+    const slice = discount.slice(i, i + 10);
+
+    let flag = true;
+    for (let j = 0; j < want.length; j++) {
+      if (slice.filter((item) => item === want[j]).length !== number[j]) {
+        flag = false;
+        break;
+      }
+    }
+    if (flag) count += 1;
+  }
+  return count;
+}
