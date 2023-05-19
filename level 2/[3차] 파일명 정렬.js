@@ -29,3 +29,39 @@ function solution(files) {
   // sort 사용법 헷갈려서 MDN 참고함
   // 문자열 정렬할 때는 p - c처럼 넣으면 안됨
 }
+
+// 다른 사람 풀이
+function solution(files) {
+  const re = /^([a-zA-Z-\. ]+)([0-9]+)(.*)$/;
+  let dict = [];
+  files.forEach((entry, idx) => {
+    let [fn, head, num] = entry.match(re);
+    dict.push({ fn, head: head.toLowerCase(), num: parseInt(num), idx });
+  });
+
+  return dict
+    .sort((a, b) => {
+      if (a.head > b.head) return 1;
+      if (a.head < b.head) return -1;
+      if (a.num > b.num) return 1;
+      if (a.num < b.num) return -1;
+      return a.idx - b.idx;
+    })
+    .map((e) => e.fn);
+}
+
+// 다른 사람 풀이 2
+function solution(files) {
+  return files.sort((a, b) => {
+    const aHead = a.match(/^\D+/)[0].toLowerCase();
+    const bHead = b.match(/^\D+/)[0].toLowerCase();
+
+    if (aHead < bHead) return -1;
+    if (aHead > bHead) return 1;
+
+    const aNum = a.match(/\d+/)[0].replace(/^0+/, "");
+    const bNum = b.match(/\d+/)[0].replace(/^0+/, "");
+
+    return aNum - bNum;
+  });
+}
