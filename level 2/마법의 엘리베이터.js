@@ -44,7 +44,7 @@ function solution(storey) {
 }
 
 // 다른 사람 풀이
-function solution2(storey) {
+function solution(storey) {
   if (storey < 5) return storey;
   const r = storey % 10;
   const m = (storey - r) / 10;
