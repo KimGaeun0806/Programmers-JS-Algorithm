@@ -4,10 +4,10 @@
 // 시간재고 푼 첫 풀이 - 약 40분
 function solution(picks, minerals) {
   let arr = [];
+  let answer = 0;
   let sum = picks.reduce((p, c) => p + c);
   let forLeng = Math.min(sum * 5, minerals.length);
   let temp = { diamond: 0, iron: 0, stone: 0 };
-  let answer = 0;
 
   for (let i = 0; i < forLeng; i++) {
     temp[minerals[i]]++;
