@@ -2,7 +2,7 @@ function solution(n, wires) {
   let answer = 200;
 
   const func = (arr, cut) => {
-    const set1 = new Set([cut[0]]);
+    const set1 = new Set([cut[0]]); // new Set() 안에는 iterable한 요소만 넣을 수 있음 (배열 등)
     const set2 = new Set([cut[1]]);
 
     while (arr.length > 0) {
