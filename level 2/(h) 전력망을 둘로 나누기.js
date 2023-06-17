@@ -1,3 +1,7 @@
+// LV2_완전탐색: 전력망을 둘로 나누기
+
+// 20230617
+// 힌트 보고 푼 풀이
 function solution(n, wires) {
   let answer = 200;
 
