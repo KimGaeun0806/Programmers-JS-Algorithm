@@ -1,6 +1,6 @@
 // LV2_2021 카카오 채용연계형 인턴십: 거리두기 확인하기
 
-// 20230620
+// 20230621
 // 시간재고 푼 첫 풀이 - 약 37분
 function solution(places) {
   const distance = (arr1, arr2) => {
