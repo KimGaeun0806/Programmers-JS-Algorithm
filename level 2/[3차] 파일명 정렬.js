@@ -1,4 +1,4 @@
-// // LV2_2018 KAKAO BLIND RECRUITMENT - [3차] 파일명 정렬
+// LV2_2018 KAKAO BLIND RECRUITMENT - [3차] 파일명 정렬
 
 // 20230519
 // 시간재고 푼 첫 풀이 - 약 20분
