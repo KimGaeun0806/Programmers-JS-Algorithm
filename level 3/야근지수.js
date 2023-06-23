@@ -1,6 +1,6 @@
 // LV3_연습문제: 야근지수
 
-// 20230621
+// 20230622
 // 시간재고 푼 첫 풀이 - 약 27분
 function solution(n, works) {
   works.sort((a, b) => a - b);
